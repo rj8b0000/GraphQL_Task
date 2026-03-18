@@ -3,8 +3,12 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigator/types';
+import { Users } from '../../../types';
 
-const UserComponent = () => {
+interface UserComponentProp {
+  item: Users;
+}
+const UserComponent: React.FC<UserComponentProp> = ({ item }) => {
   type UserScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
     'Posts'
@@ -14,11 +18,11 @@ const UserComponent = () => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate('Posts')}
+      onPress={() => navigation.navigate('Posts', { id: item.id })}
     >
-      <Text style={styles.text}>Id - 1</Text>
-      <Text style={styles.text}>Name - Rudraksh</Text>
-      <Text style={styles.text}>Email - janirudraksh228@gmail.com</Text>
+      <Text style={styles.text}>Id - {item.id}</Text>
+      <Text style={styles.text}>Name - {item.name}</Text>
+      <Text style={styles.text}>Email - {item.email}</Text>
     </TouchableOpacity>
   );
 };
@@ -28,7 +32,7 @@ export default UserComponent;
 const styles = StyleSheet.create({
   container: {
     borderWidth: 0.2,
-    marginVertical: '5%',
+    marginVertical: '3%',
     padding: '4%',
     borderRadius: 16,
     backgroundColor: '#f1f1f1',

@@ -1,5 +1,5 @@
 export type RootStackParamList = {
   Users: undefined;
-  Posts: undefined;
-  AddPost: undefined;
+  Posts: { id: string };
+  AddPost: { id: string };
 };

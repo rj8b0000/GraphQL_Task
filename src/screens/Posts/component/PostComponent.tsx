@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Posts } from '../../../types';
 
-const PostComponent = () => {
+interface PostComponentProp {
+  item: Posts;
+}
+const PostComponent: React.FC<PostComponentProp> = ({ item }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.postTitle}>Post Title</Text>
-      <Text style={styles.postBody}>
-        Loremdfd dsgdfg ddfg ddfgdfghfd dfgfgh dfrter.....
-      </Text>
+      <Text style={styles.postTitle}>{item.title}</Text>
+      <Text style={styles.postBody}>{item.body}</Text>
     </View>
   );
 };
@@ -17,7 +19,7 @@ export default PostComponent;
 const styles = StyleSheet.create({
   container: {
     borderWidth: 0.2,
-    marginVertical: '5%',
+    marginVertical: '3%',
     padding: '4%',
     borderRadius: 16,
     backgroundColor: '#f1f1f1',
